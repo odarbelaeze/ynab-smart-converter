@@ -8,6 +8,7 @@ interface Props {
 const CsvLoader: FC<Props> = ({ onChange }) => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
+
   const handleFile = useCallback(() => {
     const file = fileRef?.current?.files?.item(0);
     if (file) {
@@ -20,7 +21,8 @@ const CsvLoader: FC<Props> = ({ onChange }) => {
       });
       reader.readAsText(file);
     }
-  }, []);
+  }, [onChange]);
+
   return (
     <section className="upload">
       {!!error && <p>{error}</p>}
