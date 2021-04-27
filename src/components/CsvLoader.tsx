@@ -15,9 +15,12 @@ const CsvLoader: FC<Props> = ({ onChange }) => {
       const reader = new FileReader();
       reader.addEventListener("load", (e) => {
         const result = Papa.parse(e.target?.result as string, { header: true });
-        if (result.errors)
+        if (result.errors.length > 0)
           setError(result.errors.map((e) => e.message).join(";"));
-        else onChange(result.meta.fields as string[], result.data as object[]);
+        else {
+          console.log(result);
+          onChange(result.meta.fields as string[], result.data as object[]);
+        }
       });
       reader.readAsText(file);
     }

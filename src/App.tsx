@@ -11,14 +11,14 @@ interface State {
 }
 
 const App = () => {
-  const [_, setState] = useState<State | null>(null);
+  const [state, setState] = useState<State | null>(null);
 
   return (
     <div className="App">
       <header className="App-header">YNAB Smart Converter</header>
       <main className="App-main">
         <CsvLoader onChange={(headers, data) => setState({ headers, data })} />
-        <ConfigSelector headers={["helo"]} />
+        {state && state.headers && <ConfigSelector headers={state.headers} />}
       </main>
     </div>
   );

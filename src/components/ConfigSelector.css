@@ -1,0 +1,16 @@
+.ConfigSelector {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.ConfigSelector-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ConfigSelector-field select {
+  font-size: 18px;
+}
